@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.krakedev.veterinaria.entity.Mascota;
 
-@RestController
-@RequestMapping("api/mascotas")
+/* @RestController */
+/* @RequestMapping("api/mascotas") */
 public class MascotaController {
 
     private List<Mascota> mensajes = new ArrayList<>();
