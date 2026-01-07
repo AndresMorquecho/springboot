@@ -1,5 +1,4 @@
 package com.krakedev.veterinaria.entity;
-
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -31,7 +30,12 @@ public class Mascota {
 
     @Column(name = "nombre_dueno", nullable = false, length = 100)
     private String nombreDueno;
+
+    @Column(name = "estado", nullable = false, length = 100)
+    private EstadoMascota estado;
+
     @Column(name = "fecha_registro", nullable = false)
     private LocalDate fechaRegistro = LocalDate.now();
+
 
 }

@@ -3,6 +3,8 @@ package com.krakedev.veterinaria.services.impl;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
+
+import com.krakedev.veterinaria.entity.EstadoMascota;
 import com.krakedev.veterinaria.entity.Mascota;
 import com.krakedev.veterinaria.repository.VeterinariaRespository;
 import com.krakedev.veterinaria.services.VeterinariaServices;
@@ -58,6 +60,23 @@ public class VeterinariaServiceImpl implements VeterinariaServices {
                 .orElseThrow(() -> new Exception("Masota no encontrada: " + idMascota + "No encontrada"));
 
         veterinariaRespository.deleteById(idMascota);
+
+    }
+
+    @SneakyThrows
+    @Override
+    public Mascota cambiarEstadoMascota(long id, EstadoMascota estadoMascota) {
+
+        Mascota mascotaExistente = veterinariaRespository.findById(id)
+                .orElseThrow(() -> new Exception("Masota no encontrada: " + id + "No encontrada"));
+
+        mascotaExistente.setEstado(estadoMascota);
+        return veterinariaRespository.save(mascotaExistente);
+    }
+
+    @Override
+    public List<Mascota> obtenerPorEstado(EstadoMascota estado) {
+        return veterinariaRespository.findByEstado(estado);
 
     }
 
